@@ -17,24 +17,26 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: postgres
-  password: Qwerty123
+  username: <%= ENV['RESERVAS_USER'] %>
+  password: <%= ENV['RESERVAS_DB_PASSWORD'] %>
+  #Qwerty123
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
-  database: reservas-app-cfDB
+  database: <%= ENV['RESERVAS_DB_NAME'] %>
+  #reservas-app-cfDB
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  username: postgres
+  username: <%= ENV['RESERVAS_USER'] %>
 
   # The password associated with the postgres role (username).
-  password: Qwerty123
+  password: <%= ENV['RESERVAS_DB_PASSWORD'] %>
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -59,7 +61,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: reservas-app-cfDB
+  database: <%= ENV['RESERVAS_DB_NAME'] %>
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -82,6 +84,6 @@ test:
 #
 production:
   <<: *default
-  database: reservas-app-cfDB
-  username: postgres
-  password: Qwerty123
+  database: <%= ENV['RESERVAS_DB_NAME'] %>
+  username: <%= ENV['RESERVAS_USER'] %>
+  password: <%= ENV['RESERVAS_DB_PASSWORD'] %>
