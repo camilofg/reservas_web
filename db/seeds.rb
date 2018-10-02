@@ -39,3 +39,33 @@ Field.create([
         place_id: 1
     }
 ])
+User.create([
+{
+    name: "camilo forero",
+    email: "camus34@hotmail.com",
+    password: "Qwerty123"
+},
+{
+    name: "raul gonzalez",
+    email: "camus30@hotmail.com",
+    password: "Qwerty321"
+}
+])
+Event.create([
+{
+    title: "reserva test1",
+    start: "2018-10-02 16:00:00",
+    end: "2018-10-02 17:00:00",
+    promo: true,
+    field_id: 1,
+    user_id: 1
+},
+{
+    title: "reserva test2",
+    start: "2018-10-03 16:00:00",
+    end: "2018-10-03 17:00:00",
+    promo: false,
+    field_id: 2,
+    user_id: 2
+}
+])
