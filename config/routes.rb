@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   namespace 'api' do 
     namespace 'v1' do
       resources :places
-      resources :fields
+      resources :fields do
+        resources :events
+      end
       resources :events
     end
   end

@@ -3,7 +3,8 @@ module Api
         class EventsController < ApplicationController
             skip_before_action :verify_authenticity_token
             def index
-                events = Event.order('start');
+                events = Event.where("field_id = ?", params[:field_id])
+                #events = Event.order('start');
                 render json: {status: 'success', message: 'events loaded', data: events}, status: 200
             end
 
@@ -14,6 +15,7 @@ module Api
             end
 
             def create
+                puts "event parameters"
                 puts event_params
                 event = Event.new(event_params)
 
@@ -42,7 +44,7 @@ module Api
             private
 
             def event_params
-                params.permit(:title, :start, :end, :promo )
+                params.permit(:title, :start, :end, :promo, :field_id, :user_id )
             end
         end
     end
