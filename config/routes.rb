@@ -8,8 +8,11 @@ Rails.application.routes.draw do
         resources :events
       end
       resources :events
+      resources :authenticate
     end
   end
+
+  #post '/authenticate', to: 'authentication#authenticate'
   
   root to: "pages#home"
   get "/login", to: "pages#home"
